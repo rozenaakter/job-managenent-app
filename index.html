@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Job Board</h1>
+        <form id="jobForm">
+            <label for="jobTitle">Job Title:</label>
+            <input type="text" id="jobTitle" required>
+
+            <label for="jobDescription">Job Description:</label>
+            <textarea id="jobDescription" required></textarea>
+
+            <button type="button" onclick="addJob()">Post Job</button>
+        </form>
+
+        <div id="jobList"></div>
+    </div>
+
+    <script>
+        function addJob() {
+    const jobTitle = document.getElementById("jobTitle").value;
+    const jobDescription = document.getElementById("jobDescription").value;
+
+    if (jobTitle && jobDescription) {
+        const jobList = document.getElementById("jobList");
+
+        const jobCard = document.createElement("div");
+        jobCard.classList.add("job-card");
+
+        jobCard.innerHTML = `
+              <h3>${jobTitle}</h3>
+              <p>${jobDescription}</p>
+          `;
+
+        jobList.appendChild(jobCard);
+
+        // Clear the form fields
+        document.getElementById("jobForm").reset();
+    } else {
+        alert("Please fill out all fields");
+    }
+}
+    </script>
+</body>
+</html>
